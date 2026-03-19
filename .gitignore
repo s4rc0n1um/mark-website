@@ -3,3 +3,10 @@ Thumbs.db
 _pgbackup/
 _pg-backup/
 _pgexport/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
