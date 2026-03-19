@@ -1,0 +1,436 @@
+/* ===========================================================
+   THEME — Colors extracted from the hero image
+   Background from the dark cabin wood, accent from the warm
+   sunset highlights, dim text from the muted sky tones.
+   =========================================================== */
+:root {
+  --color-bg:           #1a1816;       /* Dark cabin wood */
+  --color-surface:      #23201c;       /* Modal card background */
+  --color-text:         #f0e8df;       /* Warm cream (from highlight tones) */
+  --color-text-dim:     #a19587;       /* Muted sky/porch tone — pulled from image */
+  --color-accent:       #c9a48e;       /* Dusty rose-tan (from warm highlights) */
+  --color-accent-hover: #dbc0ad;       /* Lighter warm rose on hover */
+  --color-accent-soft:  rgba(201, 164, 142, 0.12);
+  --color-border:       rgba(240, 232, 223, 0.08);
+  --color-overlay:      rgba(26, 24, 22, 0.92);
+  --font-display:       'DM Serif Display', Georgia, 'Times New Roman', serif;
+  --font-body:          'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --radius:             6px;
+  --transition:         0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* ===========================================================
+   RESET & BASE
+   =========================================================== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img { max-width: 100%; display: block; }
+
+
+/* ===========================================================
+   SITE HEADER — Transparent, overlays top of hero, scrolls away
+   =========================================================== */
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;      /* EDIT: "flex-start" for left-aligned, "center" for centered */
+  padding: 1.5rem 2rem;         /* EDIT: Top/bottom and left/right padding */
+}
+
+.site-header__logo {
+  display: inline-block;
+  line-height: 0;               /* Prevents extra space around the image */
+}
+
+/* EDIT: Wordmark image sizing */
+.site-header__wordmark {
+  height: 40px;                 /* EDIT: Controls wordmark size — increase for larger */
+  width: auto;
+  filter: drop-shadow(0 1px 6px rgba(0,0,0,0.35));
+  transition: opacity var(--transition);
+}
+
+.site-header__logo:hover .site-header__wordmark {
+  opacity: 0.85;
+}
+
+
+/* ===========================================================
+   HERO SECTION
+   =========================================================== */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* EDIT: Hero image — light treatment to preserve existing color grade */
+.hero__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;  /* EDIT: Frames face/upper body on the porch */
+  filter: brightness(0.6) saturate(0.92);
+  transition: filter 0.8s ease;
+}
+
+/* Gradient fade — top darkened for wordmark legibility, bottom fades into page */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg,
+      rgba(26,24,22,0.35) 0%,
+      rgba(26,24,22,0.05) 15%,
+      rgba(26,24,22,0.0) 25%,
+      rgba(26,24,22,0.25) 55%,
+      rgba(26,24,22,0.96) 100%
+    );
+  pointer-events: none;
+}
+
+/* Subtle film grain — set opacity: 0 to disable */
+.hero__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* Hero content — bottom-anchored */
+.hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem 2rem 3.5rem;
+  max-width: 720px;
+  width: 100%;
+}
+
+/* Staggered fade-up entrance */
+.hero__content > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.hero__content > *:nth-child(1) { animation-delay: 0.15s; }
+.hero__content > *:nth-child(2) { animation-delay: 0.3s; }
+.hero__content > *:nth-child(3) { animation-delay: 0.45s; }
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ===========================================================
+   BUTTONS
+   =========================================================== */
+.hero__actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 2rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1.5px solid;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Primary — dusty rose filled */
+.btn--primary {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border-color: var(--color-accent);
+  box-shadow: 0 2px 12px rgba(201,164,142,0.18);
+}
+.btn--primary:hover {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  box-shadow: 0 4px 20px rgba(201,164,142,0.28);
+  transform: translateY(-2px);
+}
+
+/* Secondary — warm ghost outline */
+.btn--secondary {
+  background: rgba(240,232,223,0.04);
+  color: var(--color-text);
+  border-color: rgba(240,232,223,0.18);
+  backdrop-filter: blur(4px);
+}
+.btn--secondary:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  transform: translateY(-2px);
+}
+
+.btn svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+/* ===========================================================
+   SOCIAL ICON BAR
+   =========================================================== */
+.hero__socials {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-dim);
+  background: rgba(240,232,223,0.02);
+  transition: all var(--transition);
+}
+
+.social-link:hover {
+  color: var(--color-accent);
+  border-color: rgba(201,164,142,0.4);
+  background: var(--color-accent-soft);
+  transform: translateY(-2px);
+}
+
+.social-link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.social-link svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+
+/* ===========================================================
+   CONTACT MODAL
+   =========================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-overlay);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.modal-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--radius) + 4px);
+  width: 92%;
+  max-width: 460px;
+  padding: 2.5rem 2rem 2rem;
+  position: relative;
+  transform: translateY(16px) scale(0.98);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+}
+
+.modal-backdrop.is-open .modal {
+  transform: translateY(0) scale(1);
+}
+
+.modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--color-text-dim);
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: 50%;
+  transition: all var(--transition);
+}
+.modal__close:hover {
+  color: var(--color-text);
+  background: rgba(240,232,223,0.06);
+}
+.modal__close svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.modal__title {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  font-weight: 400;
+  margin-bottom: 0.35rem;
+}
+
+.modal__subtitle {
+  font-size: 0.82rem;
+  color: var(--color-text-dim);
+  margin-bottom: 1.8rem;
+  font-weight: 300;
+}
+
+
+/* ===========================================================
+   FORM FIELDS
+   =========================================================== */
+.form-group { margin-bottom: 1.15rem; }
+
+.form-group label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+  margin-bottom: 0.4rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  background: rgba(240,232,223,0.03);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0.7rem 0.85rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--color-text);
+  transition: border-color var(--transition), background var(--transition);
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--color-accent);
+  background: rgba(201,164,142,0.04);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(240,232,223,0.18);
+  font-weight: 300;
+}
+
+.form__submit { width: 100%; margin-top: 0.6rem; }
+
+
+/* ===========================================================
+   FORM SUCCESS MESSAGE
+   =========================================================== */
+.form__success {
+  display: none;
+  text-align: center;
+  padding: 2.5rem 0;
+}
+.form__success.is-visible { display: block; }
+.form__success p {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  margin-bottom: 0.4rem;
+  color: var(--color-accent);
+}
+.form__success span {
+  font-size: 0.85rem;
+  color: var(--color-text-dim);
+  font-weight: 300;
+}
+
+
+/* ===========================================================
+   RESPONSIVE
+   =========================================================== */
+@media (max-width: 520px) {
+  .site-header {
+    padding: 1rem 1.25rem;
+  }
+  .site-header__wordmark {
+    height: 28px;              /* Smaller wordmark on mobile */
+  }
+  .hero__content { padding: 1.5rem 1.5rem 2.5rem; }
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .btn { justify-content: center; }
+  .modal {
+    padding: 2rem 1.4rem 1.5rem;
+    margin: 0 0.5rem;
+  }
+}

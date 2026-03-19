@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- EDIT: PAGE TITLE & SEO -->
+  <title>Mark Luckenbill — Official Site</title>
+  <meta name="description" content="Official website for Mark Luckenbill. Listen to the latest music and get in touch.">
+
+  <!-- EDIT: FONTS — Change at https://fonts.google.com -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- STYLESHEET — Pinegrow will edit this via its Style panel -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <!-- ================================================================
+       HEADER — Transparent, scrolls with the page
+       Sits over the top of the hero image.
+       ================================================================ -->
+  <header class="site-header">
+    <!-- EDIT: WORDMARK — Replace src if you change the filename -->
+    <a href="/" class="site-header__logo">
+      <img src="assets/images/wordmark.png" alt="Mark Luckenbill" class="site-header__wordmark">
+    </a>
+  </header>
+
+
+  <!-- ================================================================
+       HERO SECTION
+       ================================================================ -->
+  <section class="hero">
+
+    <!-- EDIT: HERO IMAGE — Replace src with your image file in assets/images/ -->
+    <img
+      class="hero__image"
+      src="assets/images/hero-image.jpg"
+      alt="Mark Luckenbill sitting on cabin porch at sunset"
+      loading="eager"
+    >
+
+    <div class="hero__overlay"></div>
+    <div class="hero__grain"></div>
+
+    <div class="hero__content">
+
+      <!-- BUTTONS -->
+      <div class="hero__actions">
+
+        <!-- EDIT: LISTEN BUTTON — Change href to your music link -->
+        <a href="https://open.spotify.com" target="_blank" rel="noopener" class="btn btn--primary">
+          <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Listen Now
+        </a>
+
+        <!-- CONTACT BUTTON — Opens modal -->
+        <button type="button" class="btn btn--secondary" id="contactOpen">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Get in Touch
+        </button>
+
+      </div>
+
+      <!-- SOCIAL ICONS — Update each href to your profile URLs -->
+      <nav class="hero__socials" aria-label="Social media links">
+
+        <!-- EDIT: FACEBOOK -->
+        <a href="https://facebook.com" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+
+        <!-- EDIT: INSTAGRAM -->
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm4.5 5.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9zm5.25-.75a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25z"/></svg>
+        </a>
+
+        <!-- EDIT: TIKTOK -->
+        <a href="https://tiktok.com" target="_blank" rel="noopener" class="social-link" aria-label="TikTok">
+          <svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 13.4 2h-3.12v13.93a2.68 2.68 0 0 1-2.68 2.68 2.68 2.68 0 0 1-2.68-2.68 2.68 2.68 0 0 1 2.68-2.68c.29 0 .57.05.83.13V10.2a5.87 5.87 0 0 0-.83-.06A5.88 5.88 0 0 0 1.72 16a5.88 5.88 0 0 0 5.88 5.88A5.88 5.88 0 0 0 13.48 16V8.73a7.4 7.4 0 0 0 4.33 1.39V7a4.28 4.28 0 0 1-1.21-1.18z"/></svg>
+        </a>
+
+        <!-- EDIT: SPOTIFY -->
+        <a href="https://open.spotify.com" target="_blank" rel="noopener" class="social-link" aria-label="Spotify">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.58 14.42a.62.62 0 0 1-.86.21c-2.35-1.44-5.3-1.76-8.78-.97a.63.63 0 0 1-.28-1.22c3.82-.87 7.1-.5 9.72 1.12a.63.63 0 0 1 .2.86zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 0 1-.44-1.5c3.63-1.1 8.14-.57 11.22 1.33a.78.78 0 0 1 .26 1.08zm.1-2.83c-3.22-1.91-8.54-2.09-11.62-1.16a.94.94 0 0 1-.54-1.8c3.53-1.07 9.4-.86 13.11 1.34a.94.94 0 0 1-.95 1.62z"/></svg>
+        </a>
+
+        <!-- EDIT: APPLE MUSIC -->
+        <a href="https://music.apple.com" target="_blank" rel="noopener" class="social-link" aria-label="Apple Music">
+          <svg viewBox="0 0 24 24"><path d="M15.5 3.5c0-.2.1-.4.2-.5L9.2 4.8c-.3.1-.5.3-.5.6v10.1c-.5-.2-1.1-.3-1.7-.3-2.2 0-4 1.3-4 3s1.8 3 4 3 4-1.3 4-3V9.3l5-1.3v5.5c-.5-.2-1.1-.3-1.7-.3-2.2 0-4 1.3-4 3s1.8 3 4 3 4-1.3 4-3V3.5h-3.3z"/></svg>
+        </a>
+
+        <!-- EDIT: AMAZON MUSIC -->
+        <a href="https://music.amazon.com" target="_blank" rel="noopener" class="social-link" aria-label="Amazon Music">
+          <svg viewBox="0 0 24 24"><path d="M9 7v10l9-5-9-5zM3.3 18.1c2.7 2 6.2 3.1 9.7 3.1 2.8 0 5.7-.7 8.2-2 .5-.2.1-.8-.3-.5-2.3 1.1-5 1.7-7.9 1.7-3.5 0-6.8-1-9.8-2.8-.4-.2-.7.2-.3.5h.4z"/></svg>
+        </a>
+
+        <!-- EDIT: YOUTUBE -->
+        <a href="https://youtube.com" target="_blank" rel="noopener" class="social-link" aria-label="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.546 12 3.546 12 3.546s-7.505 0-9.377.504A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.504 9.376.504 9.376.504s7.505 0 9.377-.504a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+
+        <!-- EDIT: X (TWITTER) -->
+        <a href="https://x.com" target="_blank" rel="noopener" class="social-link" aria-label="X">
+          <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+
+      </nav>
+
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       CONTACT MODAL
+       ================================================================ -->
+  <div class="modal-backdrop" id="contactModal">
+    <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+
+      <button class="modal__close" id="contactClose" aria-label="Close contact form">
+        <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <!-- EDIT: MODAL HEADING -->
+      <h2 class="modal__title" id="modalTitle">Get in Touch</h2>
+      <!-- EDIT: MODAL SUBTITLE -->
+      <p class="modal__subtitle">Booking, press, collaborations, or just to say hello.</p>
+
+      <!-- EDIT: CONTACT FORM — Connect to Formspree/Workers to send emails -->
+      <form id="contactForm" action="#" method="POST">
+        <div class="form-group">
+          <label for="contactName">Name</label>
+          <input type="text" id="contactName" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label for="contactEmail">Email</label>
+          <input type="email" id="contactEmail" name="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="contactSubject">Subject</label>
+          <input type="text" id="contactSubject" name="subject" placeholder="Booking, press, general inquiry…" required>
+        </div>
+        <div class="form-group">
+          <label for="contactMessage">Message</label>
+          <textarea id="contactMessage" name="message" placeholder="What's on your mind?" required></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary form__submit">Send Message</button>
+      </form>
+
+      <div class="form__success" id="formSuccess">
+        <p>Message Sent</p>
+        <span>Thanks — I'll get back to you soon.</span>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ================================================================
+       JAVASCRIPT
+       ================================================================ -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>

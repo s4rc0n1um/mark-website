@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mark Luckenbill — Links</title>
+  <meta name="description" content="All links for Mark Luckenbill — music, socials, and more.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-bg:           #1a1816;
+      --color-surface:      #23201c;
+      --color-card:         #2a2621;
+      --color-card-hover:   #322d27;
+      --color-text:         #f0e8df;
+      --color-text-dim:     #a19587;
+      --color-accent:       #c9a48e;
+      --color-accent-hover: #dbc0ad;
+      --color-accent-soft:  rgba(201, 164, 142, 0.12);
+      --color-border:       rgba(240, 232, 223, 0.08);
+      --font-display:       'DM Serif Display', Georgia, serif;
+      --font-body:          'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius:             10px;
+      --radius-pill:        50px;
+      --transition:         0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Background image — fixed, blurred, dimmed */
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: url('assets/images/hero-image.jpg') center 25% / cover no-repeat;
+      filter: brightness(0.25) saturate(0.6) blur(20px);
+      transform: scale(1.1); /* Prevents blur edge gaps */
+    }
+
+    /* Grain overlay */
+    .bg-grain {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 128px 128px;
+      pointer-events: none;
+      mix-blend-mode: overlay;
+    }
+
+    /* =========== MAIN CONTAINER =========== */
+    .links-page {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 440px;
+      padding: 2.5rem 1.25rem 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Fade-in animation */
+    .links-page > * {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .links-page > *:nth-child(1) { animation-delay: 0.05s; }
+    .links-page > *:nth-child(2) { animation-delay: 0.1s; }
+    .links-page > *:nth-child(3) { animation-delay: 0.15s; }
+    .links-page > *:nth-child(4) { animation-delay: 0.2s; }
+    .links-page > *:nth-child(5) { animation-delay: 0.25s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* =========== PROFILE HEADER =========== */
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .profile__avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 3px solid var(--color-accent);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      margin-bottom: 1rem;
+    }
+
+    .profile__wordmark {
+      height: 52px;
+      width: auto;
+      margin-bottom: 0rem;
+      filter: drop-shadow(0 1px 4px rgba(0,0,0,0.3));
+    }
+
+    /* =========== SOCIAL ICON ROW =========== */
+    .socials {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.8rem;
+    }
+
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--color-border);
+      color: var(--color-text-dim);
+      background: rgba(240,232,223,0.03);
+      transition: all var(--transition);
+      text-decoration: none;
+    }
+
+    .social-icon:hover {
+      color: var(--color-accent);
+      border-color: rgba(201,164,142,0.4);
+      background: var(--color-accent-soft);
+      transform: translateY(-2px);
+    }
+
+    .social-icon svg {
+      width: 17px;
+      height: 17px;
+      fill: currentColor;
+    }
+
+    /* =========== LINK CARDS =========== */
+    .link-list {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      width: 100%;
+      padding: 0.85rem 1.1rem;
+      background: rgba(50, 44, 36, 0.92);
+      border: 1px solid rgba(240, 232, 223, 0.18);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--color-text);
+      transition: all var(--transition);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+      /* Staggered animation */
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* Stagger each card */
+    .link-card:nth-child(1) { animation-delay: 0.25s; }
+    .link-card:nth-child(2) { animation-delay: 0.32s; }
+    .link-card:nth-child(3) { animation-delay: 0.39s; }
+    .link-card:nth-child(4) { animation-delay: 0.46s; }
+    .link-card:nth-child(5) { animation-delay: 0.53s; }
+    .link-card:nth-child(6) { animation-delay: 0.60s; }
+    .link-card:nth-child(7) { animation-delay: 0.67s; }
+    .link-card:nth-child(8) { animation-delay: 0.74s; }
+
+    .link-card:hover {
+      background: rgba(65, 57, 46, 0.97);
+      border-color: rgba(201,164,142,0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+    }
+
+    .link-card__icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: var(--color-accent-soft);
+      color: var(--color-accent);
+    }
+
+    .link-card__icon svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    /* Stroke-style icons */
+    .link-card__icon--stroke svg {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .link-card__text {
+      flex: 1;
+    }
+
+    .link-card__title {
+      font-size: 0.88rem;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .link-card__subtitle {
+      font-size: 0.7rem;
+      color: var(--color-text-dim);
+      font-weight: 300;
+      margin-top: 0.1rem;
+    }
+
+    .link-card__arrow {
+      color: var(--color-text-dim);
+      transition: color var(--transition), transform var(--transition);
+      flex-shrink: 0;
+    }
+    .link-card__arrow svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .link-card:hover .link-card__arrow {
+      color: var(--color-accent);
+      transform: translateX(3px);
+    }
+
+    /* =========== FOOTER =========== */
+    .links-footer {
+      margin-top: 2.5rem;
+      text-align: center;
+      font-size: 0.62rem;
+      color: rgba(161,149,135,0.35);
+      letter-spacing: 0.06em;
+    }
+
+    .links-footer a {
+      color: rgba(161,149,135,0.5);
+      text-decoration: none;
+    }
+    .links-footer a:hover {
+      color: var(--color-accent);
+    }
+
+    /* =========== RESPONSIVE =========== */
+    @media (max-width: 480px) {
+      .links-page {
+        padding: 2rem 1rem 2.5rem;
+      }
+      .profile__avatar {
+        width: 80px;
+        height: 80px;
+      }
+      .profile__wordmark {
+        height: 40px;
+      }
+    }
+    .link-card__icon--album {
+      padding: 0;
+      overflow: hidden;
+      background: none;
+    }
+
+    .link-card__album-art {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      border-radius: 8px;
+    }
+
+    /* =========== TIP DRAWER =========== */
+    .tip-toggle {
+      background: rgba(50, 44, 36, 0.92);
+      border: 1px solid rgba(240, 232, 223, 0.18);
+      width: 100%;
+      cursor: pointer;
+      font-family: var(--font-body);
+      text-align: left;
+    }
+
+    .tip-toggle[aria-expanded="true"] {
+      border-color: rgba(201,164,142,0.35);
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-bottom-color: transparent;
+    }
+
+    .tip-chevron svg {
+      transition: transform var(--transition);
+    }
+
+    .tip-toggle[aria-expanded="true"] .tip-chevron svg {
+      transform: rotate(90deg);
+    }
+
+    .tip-drawer {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .tip-drawer.is-open {
+      max-height: 400px;
+    }
+
+    .tip-child {
+      border-radius: 0 !important;
+      border-top: none !important;
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    .tip-child:last-child {
+      border-bottom-left-radius: var(--radius) !important;
+      border-bottom-right-radius: var(--radius) !important;
+    }
+
+    .tip-drawer.is-open .tip-child {
+      border-color: rgba(240, 232, 223, 0.18);
+      border-top-color: transparent;
+    }
+
+  </style>
+
+
+</head>
+
+<body>
+
+  <!-- Blurred hero background -->
+  <div class="bg"></div>
+  <div class="bg-grain"></div>
+
+  <div class="links-page">
+
+    <!-- =========== PROFILE HEADER =========== -->
+    <div class="profile">
+      <!-- EDIT: Avatar — uses the hero image cropped to circle -->
+      <img src="assets/images/hero_avatar.jpg" alt="Mark Luckenbill" class="profile__avatar">
+      <!-- EDIT: Wordmark -->
+      <img src="assets/images/wordmark.png" alt="Mark Luckenbill" class="profile__wordmark">
+    </div>
+
+    <!-- =========== SOCIAL ICONS =========== -->
+    <div class="socials">
+
+      <!-- EDIT: Update each href -->
+      <a href="https://www.facebook.com/MarkLuckenbill/" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+
+      <a href="https://www.instagram.com/markluckenbill/" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm4.5 5.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9zm5.25-.75a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25z"/></svg>
+      </a>
+
+      <a href="https://www.tiktok.com/@markluckenbill" target="_blank" rel="noopener" class="social-icon" aria-label="TikTok">
+        <svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 13.4 2h-3.12v13.93a2.68 2.68 0 0 1-2.68 2.68 2.68 2.68 0 0 1-2.68-2.68 2.68 2.68 0 0 1 2.68-2.68c.29 0 .57.05.83.13V10.2a5.87 5.87 0 0 0-.83-.06A5.88 5.88 0 0 0 1.72 16a5.88 5.88 0 0 0 5.88 5.88A5.88 5.88 0 0 0 13.48 16V8.73a7.4 7.4 0 0 0 4.33 1.39V7a4.28 4.28 0 0 1-1.21-1.18z"/></svg>
+      </a>
+
+      <a href="https://x.com/markluckenbill" target="_blank" rel="noopener" class="social-icon" aria-label="X">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+
+      <a href="https://youtube.com/@markluckenbill" target="_blank" rel="noopener" class="social-icon" aria-label="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.546 12 3.546 12 3.546s-7.505 0-9.377.504A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.504 9.376.504 9.376.504s7.505 0 9.377-.504a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+
+      <a href="https://open.spotify.com/artist/14To8IADmusCVtbxP71Sgu" target="_blank" rel="noopener" class="social-icon" aria-label="Spotify">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.58 14.42a.62.62 0 0 1-.86.21c-2.35-1.44-5.3-1.76-8.78-.97a.63.63 0 0 1-.28-1.22c3.82-.87 7.1-.5 9.72 1.12a.63.63 0 0 1 .2.86zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 0 1-.44-1.5c3.63-1.1 8.14-.57 11.22 1.33a.78.78 0 0 1 .26 1.08zm.1-2.83c-3.22-1.91-8.54-2.09-11.62-1.16a.94.94 0 0 1-.54-1.8c3.53-1.07 9.4-.86 13.11 1.34a.94.94 0 0 1-.95 1.62z"/></svg>
+      </a>
+
+      <a href="https://music.apple.com/us/artist/mark-luckenbill/1082252944" target="_blank" rel="noopener" class="social-icon" aria-label="Apple Music">
+        <svg viewBox="0 0 24 24"><path d="M15.5 3.5c0-.2.1-.4.2-.5L9.2 4.8c-.3.1-.5.3-.5.6v10.1c-.5-.2-1.1-.3-1.7-.3-2.2 0-4 1.3-4 3s1.8 3 4 3 4-1.3 4-3V9.3l5-1.3v5.5c-.5-.2-1.1-.3-1.7-.3-2.2 0-4 1.3-4 3s1.8 3 4 3 4-1.3 4-3V3.5h-3.3z"/></svg>
+      </a>
+
+    </div>
+
+    <!-- =========== LINK CARDS =========== -->
+    <!-- EDIT: Change hrefs, titles, and subtitles for each link card.
+         To add a card: copy any <a class="link-card"> block.
+         To remove: delete the entire <a>...</a> block. -->
+    <div class="link-list">
+
+      <!-- LISTEN: Country Bar -->
+      <a href="https://ffm.to/country-bar" target="_blank" rel="noopener" class="link-card">
+        <div class="link-card__icon link-card__icon--album">
+          <img src="assets/images/Countrybar_mini.jpg" alt="Country Bar" class="link-card__album-art">
+        </div>
+        <div class="link-card__text">
+          <div class="link-card__title">Listen to "Country Bar"</div>
+          <div class="link-card__subtitle">Latest single — Stream everywhere</div>
+        </div>
+        <div class="link-card__arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+
+      <!-- SPOTIFY -->
+      <a href="https://open.spotify.com/artist/14To8IADmusCVtbxP71Sgu" target="_blank" rel="noopener" class="link-card">
+        <div class="link-card__icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.58 14.42a.62.62 0 0 1-.86.21c-2.35-1.44-5.3-1.76-8.78-.97a.63.63 0 0 1-.28-1.22c3.82-.87 7.1-.5 9.72 1.12a.63.63 0 0 1 .2.86zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 0 1-.44-1.5c3.63-1.1 8.14-.57 11.22 1.33a.78.78 0 0 1 .26 1.08zm.1-2.83c-3.22-1.91-8.54-2.09-11.62-1.16a.94.94 0 0 1-.54-1.8c3.53-1.07 9.4-.86 13.11 1.34a.94.94 0 0 1-.95 1.62z"/></svg>
+        </div>
+        <div class="link-card__text">
+          <div class="link-card__title">Follow me on Spotify</div>
+        </div>
+        <div class="link-card__arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+
+      <!-- TIKTOK -->
+      <a href="https://www.tiktok.com/@markluckenbill" target="_blank" rel="noopener" class="link-card">
+        <div class="link-card__icon">
+          <svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 13.4 2h-3.12v13.93a2.68 2.68 0 0 1-2.68 2.68 2.68 2.68 0 0 1-2.68-2.68 2.68 2.68 0 0 1 2.68-2.68c.29 0 .57.05.83.13V10.2a5.87 5.87 0 0 0-.83-.06A5.88 5.88 0 0 0 1.72 16a5.88 5.88 0 0 0 5.88 5.88A5.88 5.88 0 0 0 13.48 16V8.73a7.4 7.4 0 0 0 4.33 1.39V7a4.28 4.28 0 0 1-1.21-1.18z"/></svg>
+        </div>
+        <div class="link-card__text">
+          <div class="link-card__title">Follow me on TikTok</div>
+        </div>
+        <div class="link-card__arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+
+      <!-- WEBSITE -->
+      <a href="https://www.markluckenbill.com" target="_blank" rel="noopener" class="link-card">
+        <div class="link-card__icon link-card__icon--stroke">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="link-card__text">
+          <div class="link-card__title">Check Out My Website</div>
+        </div>
+        <div class="link-card__arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+
+      <!-- LISTEN: Favorite Kinda Drink -->
+      <a href="https://ffm.to/favkindadrink" target="_blank" rel="noopener" class="link-card">
+        <div class="link-card__icon link-card__icon--album">
+          <img src="assets/images/favkinda_mini.jpg" alt="Favorite Kinda Drink" class="link-card__album-art">
+        </div>
+        <div class="link-card__text">
+          <div class="link-card__title">Listen to "Favorite Kinda Drink"</div>
+          <div class="link-card__subtitle">Stream everywhere</div>
+        </div>
+        <div class="link-card__arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+
+
+      <!-- EMAIL -->
+      <a href="mailto:info@markluckenbill.com" class="link-card">
+        <div class="link-card__icon link-card__icon--stroke">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="link-card__text">
+          <div class="link-card__title">Email Me</div>
+          <div class="link-card__subtitle">info@markluckenbill.com</div>
+        </div>
+        <div class="link-card__arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+
+      <!-- SEND A TIP — toggle button -->
+      <div role="button" tabindex="0" class="link-card tip-toggle" id="tipToggle" aria-expanded="false">
+        <div class="link-card__icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+        </div>
+        <div class="link-card__text">
+          <div class="link-card__title">Send Me a Tip! 🙏</div>
+          <div class="link-card__subtitle">Support the music</div>
+        </div>
+        <div class="link-card__arrow tip-chevron"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+
+      <!-- TIP OPTIONS — hidden by default -->
+      <div class="tip-drawer" id="tipDrawer">
+
+        <!-- PAYPAL -->
+        <a href="https://paypal.me/markluck" target="_blank" rel="noopener" class="link-card tip-child">
+          <div class="link-card__icon" style="background: rgba(0,112,186,0.15); color: #4fa3e0;">
+            <svg viewBox="0 0 24 24"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.59 3.025-2.566 6.243-8.148 6.243H10.19l-1.166 7.387h3.49l.744-4.717h2.07c4.357 0 6.761-2.077 7.596-6.504.3-1.583.098-2.759-.702-4.122z"/></svg>
+          </div>
+          <div class="link-card__text">
+            <div class="link-card__title">PayPal</div>
+          </div>
+          <div class="link-card__arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </a>
+
+        <!-- VENMO -->
+        <a href="https://account.venmo.com/u/MarkLuckenbill" target="_blank" rel="noopener" class="link-card tip-child">
+          <div class="link-card__icon" style="background: rgba(0,148,204,0.15); color: #5bc8f5;">
+            <svg viewBox="0 0 24 24"><path d="M18.05 2c.67 1.1 1 2.3 1 3.64 0 4.53-3.87 10.42-7.02 14.56H5.37L2 2.9l5.87-.56 1.93 7.8c1.8-3.04 4.02-7.82 4.02-11.07 0-.75-.12-1.4-.33-1.96L18.05 2z"/></svg>
+          </div>
+          <div class="link-card__text">
+            <div class="link-card__title">Venmo</div>
+          </div>
+          <div class="link-card__arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </a>
+
+        <!-- CASH APP -->
+        <a href="https://cash.app/$MarkLuckenbill" target="_blank" rel="noopener" class="link-card tip-child">
+          <div class="link-card__icon" style="background: rgba(0,212,110,0.15); color: #00d46e;">
+            <svg viewBox="0 0 24 24"><path d="M14.28 4.28l-.84-.84a.4.4 0 0 0-.57 0l-.84.84a3.63 3.63 0 0 0-3.2 3.59v.16a3.63 3.63 0 0 0 3.63 3.63h1.09a1.45 1.45 0 0 1 0 2.9h-2.9a.36.36 0 0 0-.36.36v1.82c0 .2.16.36.36.36h1.09v.91c0 .2.16.36.36.36h1.09c.2 0 .36-.16.36-.36v-.97a3.63 3.63 0 0 0-.55-7.22h-1.09a1.45 1.45 0 0 1 0-2.9h2.9c.2 0 .36-.16.36-.36V4.64a.36.36 0 0 0-.36-.36h-1.09v-.91a.36.36 0 0 0-.36-.36h-1.09a.36.36 0 0 0-.36.36v.91z"/></svg>
+          </div>
+          <div class="link-card__text">
+            <div class="link-card__title">Cash App</div>
+          </div>
+          <div class="link-card__arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- =========== FOOTER =========== -->
+    <div class="links-footer">
+      &copy; 2026 Mark Luckenbill · <a href="/">markluckenbill.com</a>
+    </div>
+
+  </div>
+
+  <script>
+    const toggle = document.getElementById('tipToggle');
+    const drawer = document.getElementById('tipDrawer');
+
+    function tipToggle() {
+      const open = drawer.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open);
+    }
+
+    toggle.addEventListener('click', tipToggle);
+    toggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        tipToggle();
+      }
+    });
+  </script>
+
+</body>
+</html>
